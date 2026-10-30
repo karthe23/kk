@@ -1,6 +1,6 @@
 services:
   - type: web
-    name: emto-logistics
+    name: port-by-kk
     runtime: node
     plan: free
     buildCommand: npm install

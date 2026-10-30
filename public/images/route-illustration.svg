@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 420 150" role="img">
+  <rect width="420" height="150" rx="20" fill="#2f604d"/>
+  <path d="M56 93C112 27 180 126 237 63S331 39 366 74" fill="none" stroke="#c8f269" stroke-width="4" stroke-dasharray="8 8"/>
+  <circle cx="56" cy="93" r="13" fill="#c8f269"/><circle cx="366" cy="74" r="13" fill="#c8f269"/>
+  <rect x="42" y="46" width="30" height="25" rx="5" fill="#f7faf1"/><path d="M47 75h20l-4 9H51z" fill="#f7faf1"/>
+  <rect x="350" y="46" width="33" height="27" rx="4" fill="#f7faf1"/><path d="M350 73h33v8h-33z" fill="#f7faf1"/>
+  <text x="210" y="137" text-anchor="middle" fill="#dbe9d2" font-family="Arial,sans-serif" font-size="12" letter-spacing="2">SMART ROUTES · LIVE VISIBILITY</text>
+</svg>

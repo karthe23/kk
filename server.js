@@ -6,7 +6,7 @@ import { randomUUID, createHmac } from "node:crypto";
 
 const root = dirname(fileURLToPath(import.meta.url));
 const port = Number(process.env.PORT || 3000);
-const databaseFile = resolve(root, process.env.DATABASE_FILE || "./data/emto.json");
+const databaseFile = resolve(root, process.env.DATABASE_FILE || "./data/port-by-kk.json");
 const supabaseUrl = process.env.SUPABASE_URL?.replace(/\/$/, "");
 const supabaseKey = process.env.SUPABASE_SERVICE_ROLE_KEY;
 const paymentProvider = process.env.PAYMENT_PROVIDER || "mock";
@@ -90,14 +90,14 @@ async function razorpayOrder(booking) {
 async function route(request, response) {
   const url = new URL(request.url, `http://${request.headers.host}`);
   if (request.method === "OPTIONS") return json(response, 204, {});
-  if (request.method === "GET" && url.pathname === "/api/health") return json(response, 200, { ok: true, service: "emto-api", database: useSupabase ? "supabase" : "local-json", payments: paymentProvider });
+  if (request.method === "GET" && url.pathname === "/api/health") return json(response, 200, { ok: true, service: "port-by-kk-api", database: useSupabase ? "supabase" : "local-json", payments: paymentProvider });
   if (request.method === "GET" && url.pathname === "/api/config") return json(response, 200, { paymentProvider, razorpayKeyId: process.env.RAZORPAY_KEY_ID || null });
   if (request.method === "GET" && url.pathname === "/api/bookings") return json(response, 200, { bookings: await databaseBookings() });
   if (request.method === "POST" && url.pathname === "/api/quotes") return json(response, 200, { amount: quote(await body(request)), currency: "INR", estimate: "3-5 hours" });
   if (request.method === "POST" && url.pathname === "/api/bookings") {
     const input = await body(request);
     if (!input.pickup || !input.dropoff || !input.vehicle || !input.distance) return json(response, 400, { error: "Pickup, drop-off, vehicle and distance are required." });
-    const booking = { id: `EMT-${randomUUID().slice(0, 8).toUpperCase()}`, ...input, amount: quote(input), status: "confirmed", paymentStatus: "pending", createdAt: new Date().toISOString(), eta: "Today, 4:30 PM" };
+    const booking = { id: `PRT-${randomUUID().slice(0, 8).toUpperCase()}`, ...input, amount: quote(input), status: "confirmed", paymentStatus: "pending", createdAt: new Date().toISOString(), eta: "Today, 4:30 PM" };
     await saveBooking(booking);
     return json(response, 201, { booking });
   }
@@ -139,4 +139,4 @@ createServer((request, response) => {
     response.writeHead(200, { "Content-Type": types[safeFile.slice(safeFile.lastIndexOf("."))] || "application/octet-stream" });
     response.end(content);
   } catch { response.writeHead(404); response.end("Not found"); }
-}).listen(port, () => console.log(`EMTO is running at http://localhost:${port}`));
+}).listen(port, () => console.log(`Port by kk is running at http://localhost:${port}`));

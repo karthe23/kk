@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 360 140" role="img">
+  <rect width="360" height="140" rx="18" fill="#315e4b"/>
+  <circle cx="70" cy="80" r="28" fill="#c8f269"/><path d="M59 80h22M70 69v22" stroke="#214d3d" stroke-width="6" stroke-linecap="round"/>
+  <path d="M110 80h91" stroke="#c8f269" stroke-width="3" stroke-dasharray="7 7"/>
+  <path d="M220 67h45l17 14v23h-62z" fill="#f6f7f2"/><path d="M265 67v14h17" fill="none" stroke="#315e4b" stroke-width="3"/>
+  <circle cx="235" cy="106" r="8" fill="#c8f269"/><circle cx="270" cy="106" r="8" fill="#c8f269"/>
+  <text x="180" y="35" text-anchor="middle" fill="#dbe9d2" font-family="Arial,sans-serif" font-size="13" font-weight="700">PORT BY KK</text>
+</svg>

@@ -1,35 +1,27 @@
-<<<<<<< HEAD
-# kk
-=======
-# EMTO Logistics Platform
+# Port by kk
 
-## Free live hosting, database and UPI payments
+Port by kk is a business logistics booking and shipment visibility platform.
 
-The production setup is deliberately chosen as:
+## Production setup
 
-- **Render free web service** for Node hosting (`render.yaml` is included).
-- **Supabase free PostgreSQL** for durable bookings and payments (`supabase-schema.sql` is included).
-- **Razorpay Checkout** for UPI, cards and netbanking. The server verifies Razorpay's signature before marking a booking paid.
+- **Hosting:** Render free web service using [`render.yaml`](./render.yaml).
+- **Database:** Supabase PostgreSQL using [`supabase-schema.sql`](./supabase-schema.sql).
+- **Payments:** Razorpay Checkout with UPI, cards and netbanking.
 
-Free Render services may sleep after inactivity. Supabase is the database of record; local JSON is used only when Supabase variables are absent.
+Razorpay signatures are verified by the server before a booking is marked paid. Keep `SUPABASE_SERVICE_ROLE_KEY` and `RAZORPAY_KEY_SECRET` in Render environment variables only.
 
-### Deploy
+## Deploy
 
-1. Create a Supabase project, open SQL Editor, and run [`supabase-schema.sql`](./supabase-schema.sql).
-2. Create a Razorpay account, enable UPI, and copy the API key ID and secret from Test Mode first.
-3. Create a Render Web Service from this folder/repository. Render will use [`render.yaml`](./render.yaml).
-4. Add the Render environment variables: `SUPABASE_URL`, `SUPABASE_SERVICE_ROLE_KEY`, `RAZORPAY_KEY_ID`, `RAZORPAY_KEY_SECRET`, and `PUBLIC_BASE_URL` (your Render URL).
-5. Test a booking with Razorpay Test Mode. Switch to live Razorpay keys only after KYC and webhook/reconciliation review.
-
-Never expose `SUPABASE_SERVICE_ROLE_KEY` or `RAZORPAY_KEY_SECRET` in frontend code. The browser receives only the Razorpay public key ID.
+1. Run the SQL in `supabase-schema.sql` in the Supabase SQL Editor.
+2. Connect the `karthe23/kk` GitHub repository to Render.
+3. Use Node 20, `npm install` as the build command, and `npm start` as the start command.
+4. Set `SUPABASE_URL`, `SUPABASE_SERVICE_ROLE_KEY`, `RAZORPAY_KEY_ID`, `RAZORPAY_KEY_SECRET`, `PUBLIC_BASE_URL`, and `PAYMENT_PROVIDER=razorpay`.
+5. Test with Razorpay Test Mode before switching to live keys.
 
 ## Local development
-
-Requires Node.js 20 or newer:
 
 ```bash
 npm start
 ```
 
-Open `http://localhost:3000`. Without production variables, the app uses the explicit `mock` payment mode and `data/emto.json`. With Supabase variables, bookings use PostgreSQL. Set `PAYMENT_PROVIDER=razorpay` to exercise real Razorpay UPI checkout.
->>>>>>> a5e1a42 (Deploy EMTO logistics platform)
+Open `http://localhost:3000`. Without production variables, the app uses explicit mock payments and `data/port-by-kk.json`. With Supabase variables, bookings use PostgreSQL.
