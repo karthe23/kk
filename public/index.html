@@ -1,0 +1,35 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#214d3d"><meta name="description" content="EMTO business logistics booking and tracking">
+  <link rel="manifest" href="/manifest.webmanifest"><link rel="stylesheet" href="/styles.css">
+  <title>EMTO | Move better</title><script src="https://checkout.razorpay.com/v1/checkout.js"></script>
+</head>
+<body>
+  <div class="shell">
+    <aside class="sidebar">
+      <a class="brand" href="#overview"><span class="brand-mark">e</span><span>EMTO<small>move better</small></span></a>
+      <nav>
+        <a class="nav-link active" href="#overview" data-page="overview"><span>⌂</span> Overview</a>
+        <a class="nav-link" href="#book" data-page="book"><span>＋</span> Book a vehicle</a>
+        <a class="nav-link" href="#shipments" data-page="shipments"><span>↗</span> Shipments</a>
+        <a class="nav-link" href="#payments" data-page="payments"><span>₹</span> Payments</a>
+      </nav>
+      <div class="side-bottom"><div class="support"><span class="online-dot"></span><div><b>Need a hand?</b><small>Support is online</small></div></div><a class="nav-link" href="#settings"><span>⚙</span> Settings</a></div>
+    </aside>
+    <main>
+      <header class="topbar"><button class="mobile-menu" aria-label="Open menu">☰</button><div class="crumb">Workspace <b>/</b> <span id="current-page">Overview</span></div><div class="top-actions"><button class="icon-btn">⌕</button><button class="icon-btn notify">♧<i></i></button><div class="avatar">AK</div><div class="profile"><b>Arjun Kumar</b><small>Operations manager</small></div></div></header>
+      <section id="page-overview" class="page active">
+        <div class="page-heading"><div><p class="eyebrow">FRIDAY, 30 OCTOBER 2026</p><h1>Good morning, Arjun <span>✦</span></h1><p class="muted">Here’s what’s happening with your logistics today.</p></div><a class="primary-btn" href="#book">＋ New booking</a></div>
+        <div class="hero-card"><div><span class="tag light">EMTO FOR BUSINESS</span><h2>Every shipment, <em>moving forward.</em></h2><p>Reliable vehicles, transparent pricing and real-time visibility for every delivery.</p><a class="text-btn" href="#book">Book your next vehicle <span>→</span></a></div><div class="route-art"><span>📦</span><div class="road"></div><span>▰</span></div></div>
+        <div class="metrics"><article><div class="metric-icon green">↗</div><small>Active shipments</small><strong id="active-count">03</strong><span class="positive">↑ 12.5% <i>vs last month</i></span></article><article><div class="metric-icon orange">◷</div><small>In transit</small><strong>02</strong><span class="neutral">On schedule</span></article><article><div class="metric-icon purple">₹</div><small>Total spend</small><strong>₹48,620</strong><span class="positive">↓ 8.2% <i>vs last month</i></span></article><article><div class="metric-icon blue">✓</div><small>Delivered</small><strong>28</strong><span class="positive">↑ 6.4% <i>vs last month</i></span></article></div>
+        <div class="content-grid"><section class="panel"><div class="panel-head"><div><h3>Recent shipments</h3><p class="muted">Your latest delivery activity</p></div><a href="#shipments" class="small-link">View all →</a></div><div id="recent-shipments" class="shipment-list"></div></section><section class="panel"><div class="panel-head"><div><h3>Quick actions</h3><p class="muted">Common tasks, one click away</p></div></div><div class="quick-actions"><a href="#book"><span>＋</span><b>Book a vehicle</b><small>Get an instant quote</small></a><button id="pay-action"><span>₹</span><b>Make a payment</b><small>Settle an invoice</small></button><a href="#shipments"><span>⌖</span><b>Track a shipment</b><small>Live delivery updates</small></a></div></section></div>
+      </section>
+      <section id="page-book" class="page"><div class="page-heading"><div><p class="eyebrow">SHIPPER WORKSPACE</p><h1>Book a vehicle</h1><p class="muted">Tell us what you’re moving and we’ll match the right vehicle.</p></div></div><div class="form-layout"><form id="booking-form" class="panel booking-form"><label>Pickup location<input name="pickup" placeholder="e.g. Salem, Tamil Nadu" required></label><label>Drop-off location<input name="dropoff" placeholder="e.g. Chennai, Tamil Nadu" required></label><div class="form-row"><label>Distance (km)<input name="distance" type="number" min="1" placeholder="350" required></label><label>Vehicle<select name="vehicle"><option>Tata Ace</option><option>3 Wheeler</option><option>Tata 407</option><option>Eicher 14 ft</option><option>Container 20 ft</option></select></label></div><label>Goods type<select name="goods"><option>General goods</option><option>Fragile goods</option><option>FMCG / packaged goods</option><option>Industrial equipment</option></select></label><label>Pickup date<input name="date" type="date" required></label><button class="primary-btn" type="submit">Get quote & book <span>→</span></button><p id="booking-message" class="form-message"></p></form><aside class="quote-card"><span class="tag">FAST & RELIABLE</span><h2>Move with confidence.</h2><p>All bookings include a verified driver, trip updates and proof of delivery.</p><div class="quote-line"><span>Estimated fare</span><strong id="quote-amount">₹ —</strong></div><div class="quote-line"><span>Typical arrival</span><strong>3–5 hours</strong></div><div class="quote-line"><span>Payment</span><strong>Secure & flexible</strong></div></aside></div></section>
+      <section id="page-shipments" class="page"><div class="page-heading"><div><p class="eyebrow">LIVE VISIBILITY</p><h1>Your shipments</h1><p class="muted">Track every consignment from pickup to delivery.</p></div><a class="primary-btn" href="#book">＋ New booking</a></div><div class="panel"><div id="all-shipments" class="shipment-list"></div></div></section>
+      <section id="page-payments" class="page"><div class="page-heading"><div><p class="eyebrow">FINANCE</p><h1>Payments</h1><p class="muted">Simple, secure settlement for every trip.</p></div></div><div class="metrics"><article><small>Outstanding</small><strong>₹12,400</strong><span class="neutral">2 invoices due</span></article><article><small>Paid this month</small><strong>₹48,620</strong><span class="positive">↑ 8.2%</span></article></div><div class="panel invoice-panel"><div class="panel-head"><h3>Recent invoices</h3><span class="tag green-tag">UP TO DATE</span></div><div class="invoice"><span class="invoice-icon">₹</span><div><b>EMT-7A42C91F</b><small>Salem → Chennai · Today</small></div><strong>₹8,150</strong><button class="outline-btn">Download</button></div><div class="invoice"><span class="invoice-icon">₹</span><div><b>EMT-2F91AB30</b><small>Coimbatore → Salem · 28 Oct</small></div><strong>₹14,280</strong><span class="paid">Paid</span></div></div></section>
+    </main>
+  </div><div id="toast" class="toast"></div><script src="/app.js"></script>
+</body>
+</html>

@@ -1,0 +1,14 @@
+{
+  "name": "emto-logistics-platform",
+  "version": "1.0.0",
+  "private": true,
+  "description": "EMTO logistics booking and fleet operations platform",
+  "type": "module",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "node --watch server.js"
+  },
+  "engines": {
+    "node": ">=20"
+  }
+}
