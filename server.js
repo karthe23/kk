@@ -130,9 +130,9 @@ async function route(request, response) {
 
 createServer((request, response) => {
   if (request.url.startsWith("/api/")) return route(request, response).catch((error) => json(response, 500, { error: error.message }));
-  const file = request.url === "/" ? "public/index.html" : request.url.slice(1);
-  const safeFile = resolve(root, file);
-  if (!safeFile.startsWith(resolve(root, "public"))) return json(response, 403, { error: "Forbidden" });
+  const requestedPath = decodeURIComponent(new URL(request.url, `http://${request.headers.host}`).pathname);
+  const safeFile = resolve(root, "public", requestedPath === "/" ? "index.html" : requestedPath.slice(1));
+  if (!safeFile.startsWith(resolve(root, "public") + "\\")) return json(response, 403, { error: "Forbidden" });
   try {
     const content = readFileSync(safeFile);
     const types = { ".html": "text/html", ".css": "text/css", ".js": "text/javascript", ".json": "application/json", ".webmanifest": "application/manifest+json" };
